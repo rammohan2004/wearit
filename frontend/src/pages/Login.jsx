@@ -5,7 +5,7 @@ import { ToastContainer,toast } from 'react-toastify';
 
 const Login = () => {
   const [currentState,setCurrentState]=useState('Login');
-  const {token,setToken,navigate,backendUrl}=useContext(ShopContext);
+  const {token,setToken,navigate,backendUrl,getUserCart}=useContext(ShopContext);
 
   const [name,setName]=useState('');
   const [password,setPassword]=useState('');
@@ -45,6 +45,7 @@ const Login = () => {
   useEffect(()=>{
     if(token){
       navigate('/');
+      getUserCart(localStorage.getItem('token'));
     }
   },[token])
 
